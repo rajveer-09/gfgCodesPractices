@@ -20,26 +20,27 @@ class Solution
     void insert(int arr[], int i)
     {
         //code here
+        for (int t = 1; t < i; t++)
+        {
+            int temp = arr[t];
+            int j = t - 1;
+            while (j >= 0 && temp < arr[j])
+            {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
+        }
     }
      public:
     //Function to sort the array using insertion sort algorithm.
     void insertionSort(int arr[], int n)
     {
         //code here
-        for(int i = 1; i < n; i++){
-            int temp = arr[i];
-            int j = i-1;
-            for(; j>=0; j--){
-                if(arr[j]>temp){
-                    arr[j+1]=arr[j];
-                }
-                else{
-                    break;
-                }
-            }
-            arr[j + 1]= temp; 
-
-          }
+        for (int i = 1; i < n; i++)
+        {
+            insert(arr, i + 1);  // Corrected this line to pass the correct index to the insert function
+        }
     }
 };
 
